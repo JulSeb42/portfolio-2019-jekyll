@@ -1,0 +1,39 @@
+title: Name
+email: contact@name.com
+description: 
+baseurl: "/"
+url: ""
+author: 
+type: 
+cover_og: 
+favicon: 
+resume: 
+picture: picture-julien-sebag.jpg
+typeds:
+ - Typed
+ - Strings
+
+markdown: kramdown
+
+collections:
+  projects:
+    output: true
+    permalink: /:title/
+
+sass:
+    style: compressed
+    sass_dir: _sass
+
+permalink: /:title/
+
+defaults:
+  -
+    scope:
+      type: projects
+    values:
+      layout: projects
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"

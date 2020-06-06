@@ -1,0 +1,100 @@
+/*============================================================= Components =============================================================*/
+
+/*====================================== Buttons ======================================*/
+
+.btn-next 
+    width: 100%
+    height: 50vh
+    max-height: 300px
+    position: relative
+    z-index: 5
+    background-color: $bg-black
+    color: $white
+    text-decoration: none
+    @include flexbox(center, center, nowrap)
+    @include titles()
+    @include font-size(3vw)
+    @include transition(all, 0.2s, ease)
+    text-transform: uppercase
+
+    &:hover 
+        color: $bg-black
+        background-color: $white
+
+/*====================================== Glitch Pictures ======================================*/
+
+.glitch-item 
+    position: relative
+    @include flexbox(center, center, nowrap)
+    flex-direction: row
+    @extend %full
+    float: left
+    cursor: pointer
+
+    &:nth-of-type(odd) 
+        flex-direction: row-reverse
+
+        .glitch-title 
+            @include transform(translateX(30%))
+
+    &:not(:last-of-type) 
+        margin-bottom: $margin-big
+    
+    .glitch 
+        position: relative
+        width: 60vw
+        height: 40vw
+        overflow: hidden
+        cursor: pointer
+
+        &.glitch-1 .glitch-img 
+            @include glitch-style(20px, 2px, 2.25s, none, none, none, none, none, transparent, transparent, transparent, transparent, transparent)
+        
+
+        &.glitch-2 .glitch-img 
+            @include glitch-style(5px, 10px, 2s, none, none, luminosity, none, none, transparent, transparent, #4d8c60, transparent, #c9b09a)
+        
+
+        &.glitch-3 .glitch-img 
+            @include glitch-style(20px, 2px, 2.25s, none, none, multiply, none, none, transparent, transparent, #af4563, transparent, transparent)
+        
+
+        &.glitch-4 .glitch-img 
+            @include glitch-style(5px, 20px, 5s, none, exclusion, hard-light, overlay, none, transparent, #52f1cd, #525df1, #f19b52, transparent)
+        
+
+        &.glitch-5 .glitch-img 
+            @include glitch-style(50px, 100px, 2.25s, none, none, none, overlay, overlay, transparent, transparent, transparent, #000, #8d16f2)
+        
+
+        &.glitch-6 .glitch-img 
+            @include glitch-style(3px, 70px, 2.25s, none, none, overlay, none, none, transparent, transparent, rgba(255, 255, 255, 0.2), transparent, transparent)
+
+    .glitch-title 
+        @include transform(translateX(-30%))
+        @include flexbox(flex-start, flex-start, nowrap)
+        @include flex-direction(column)
+        @include font-size(6vw)
+        width: 50vw
+
+        span 
+            opacity: 0
+            @include font-size(3vw)
+            margin-top: $margin-small
+            color: $blue
+
+            @media (hover: none) and (pointer: coarse) 
+                opacity: 1
+        
+    &:hover .glitch-title span 
+        opacity: 1
+        animation: glitch-anim-text 0.5s linear
+    
+/*====================================== Fade In animation ======================================*/
+
+.fade 
+    opacity: 0 !important
+    @include transition(all, .7s, ease)
+
+.is-visible 
+    opacity: 1 !important

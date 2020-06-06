@@ -1,0 +1,16 @@
+/*============================================================= Social =============================================================*/
+
+.social {
+    @extend %ulNone;
+    @include flexbox(center, flex-start, nowrap);
+
+    li {
+        &:not(:last-child) {
+            margin-right: $margin-small;
+        }
+
+        a {
+           @include links($white, $blue)
+        }
+    }
+}

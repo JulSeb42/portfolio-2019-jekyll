@@ -1,0 +1,142 @@
+/*============================================================= Header =============================================================*/
+
+header {
+    position: fixed;
+    // top: 0;
+    top: 50px;
+    left: 0;
+    z-index: 997;
+    @include flexbox(center, flex-end, nowrap);
+    padding: $margin-medium 5vw;
+    width: 100%;
+
+    .burger {
+        width: 30px;
+        height: 20px;
+        position: relative;
+        cursor: pointer;
+        z-index: 999;
+
+        span {
+            width: 100%;
+            height: 2px;
+            position: absolute;
+            left: 0;
+            background-color: $white;
+            @include transition(all, 0.3s, ease);
+
+            &:first-child {
+                top: 0;
+            }
+
+            &:nth-child(2) {
+                top: 45%;
+            }
+
+            &:last-child {
+                bottom: 0;
+            }
+        }
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        left: 100%;
+        z-index: 998;
+        background-color: $white;
+        @include flexbox(flex-start, center, nowrap);
+        @include flex-direction(column);
+        width: 100%;
+        height: 100vh;
+        padding: $margin-big 5vw;
+        @include transition(all, 0.7s, ease);
+
+        padding-top: 100px;
+
+        .nav {
+            font-size: 7vw;
+            @include flexbox(flex-start, center, nowrap);
+            @include flex-direction(column);
+            @extend %ulNone;
+            margin-bottom: $margin-medium;
+            text-transform: uppercase;
+
+            li {
+                &:not(:last-child) {
+                    margin-bottom: $margin-small;
+                }
+
+                a {
+                    @include titles();
+                    color: $dark-gray;
+                    text-decoration: none;
+                    position: relative;
+
+                    &:after {
+                        content: "";
+                        width: 0;
+                        height: 8px;
+                        background-color: $dark-gray;
+                        position: absolute;
+                        right: 0;
+                        top: 45%;
+                        @include transition(all, 0.3s, ease);
+                    }
+
+                    &:hover:after {
+                        width: 100%;
+                    }
+                }
+            }
+
+            @media (max-width: $breakpoint-tablet) {
+                @include font-size(50px);
+            }
+
+            @media (max-width: $breakpoint-mobile) {
+                @include font-size(40px);
+            }
+        }
+
+        .social {
+            @include font-size(3vw);
+
+            li {
+                &:not(:last-child) {
+                    margin-right: $margin-medium;
+                }
+
+                a {
+                    color: $dark-gray;
+                }
+            }
+
+            @media (max-width: $breakpoint-tablet) {
+                @include font-size(40px);
+            }
+
+            @media (max-width: $breakpoint-mobile) {
+                @include font-size(25px);
+            }
+        }
+    }
+
+    &.nav-open {
+        .burger span {
+            background-color: $dark-gray;
+
+            &:first-child {
+                top: 45%;
+            }
+
+            &:last-child {
+                bottom: 45%;
+            }
+        }
+
+        nav {
+            left: 0;
+        }
+    }
+}

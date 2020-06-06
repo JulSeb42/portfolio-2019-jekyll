@@ -1,0 +1,141 @@
+/*============================================================= Fonts =============================================================*/
+
+/*====================================== Imports ======================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto:ital,wght@0,300;0,500;1,300;1,500&display=swap');
+
+/*====================================== Mixins ======================================*/
+
+@mixin titles() {
+    font-family: 'Anton', sans-serif;
+}
+
+@mixin body() {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+@mixin body-italic() {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-style: italic;
+}
+
+@mixin body-bold() {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+@mixin body-bold-italic() {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-style: italic;
+}
+
+/*====================================== Styles ======================================*/
+
+h1, h2, h3, h4, h5, h6, p {
+    @extend %paMar;
+}
+
+h1 {
+    @include titles();
+    text-transform: uppercase;
+    @include font-size(8vw);
+
+    @media (max-width: $breakpoint-tablet) {
+        @include font-size(40px);
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+        @include font-size(30px);
+    }
+}
+
+h2, #typed, .typed-cursor {
+    @include titles();
+    text-transform: uppercase;
+    @include font-size(6vw);
+
+    @media (max-width: $breakpoint-tablet) {
+        @include font-size(35px);
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+        @include font-size(25px);
+    }
+}
+
+h3 {
+    @include titles();
+    @include font-size(4vw);
+    text-transform: uppercase;
+
+    @media (max-width: $breakpoint-tablet) {
+        @include font-size(28px);
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+        @include font-size(22px);
+    }
+}
+
+h4 {
+    @include body-bold();
+    @include font-size(3vw);
+
+    @media (max-width: $breakpoint-tablet) {
+        @include font-size(28px);
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+        @include font-size(22px);
+    }
+}
+
+h5 {
+    @include body-bold-italic();
+    @include font-size(2.5vw);
+
+    @media (max-width: $breakpoint-tablet) {
+        @include font-size(24px);
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+        @include font-size(20px);
+    }
+}
+
+h6 {
+    @include body-bold-italic();
+    @include font-size(2vw);
+
+    @media (max-width: $breakpoint-tablet) {
+        @include font-size(22px);
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+        @include font-size(18px);
+    }
+}
+
+p {
+    @include font-size(16px);
+
+    strong {
+        @include body-bold();
+    }
+
+    em {
+        @include body-italic();
+    }
+
+    em strong, strong em {
+        @include body-bold-italic();
+    }
+}
+
+small {
+    @include body-italic();
+    @include font-size(14px);
+}

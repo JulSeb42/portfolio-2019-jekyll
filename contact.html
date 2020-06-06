@@ -1,0 +1,23 @@
+---
+title: Contact
+desc: 
+intro: |-
+    {:.fade}
+    Your content here
+---
+
+<div class="container-contact">
+    <div class="col">
+        {{ page.intro | markdownify }}
+        <a href="mailto:{{site.email}}" class="link-under" class="fade">Email me</a>
+    </div>
+
+    <div class="col">
+        <h4 class="fade">Find me on the web</h4>
+        <ul>
+            {% for item in site.data.social %}
+            <li><a href="{{ item.url }}" target="_blank" class="link-under fade">{{ item.name | capitalize }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

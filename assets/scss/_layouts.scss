@@ -1,0 +1,55 @@
+/*============================================================= Layouts =============================================================*/
+
+.container, .cover {
+    padding: $margin-big 5vw;
+}
+
+.cover {
+    padding-top: 0;
+    height: 80vh;
+    @include flexbox(flex-start, flex-end, nowrap);
+    @include flex-direction(column);
+    position: relative;
+
+    &.cover-page {
+        padding-bottom: 0;
+
+        h1 {
+            @include flexbox(flex-start, flex-end, nowrap);
+            @include flex-direction(column);
+            position: relative;
+            @extend %full;
+            margin-bottom: 0;
+            padding-left: $margin-medium;
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: $white;
+                width: 5px;
+                height: 90vh;
+                animation: border_height 2s ease 0s 1 normal forwards;
+            }
+        }
+    }
+}
+
+.container {
+    width: 100%;
+    position: relative;
+    float: left;
+    background-color: $bg-black;
+    position: relative;
+    z-index: 3;
+
+    .content-container {
+        max-width: 800px;
+        margin: 0 auto;
+
+        h3, h4, h5, h6, p, ul {
+            margin-bottom: $margin-medium;
+        }
+    }
+}

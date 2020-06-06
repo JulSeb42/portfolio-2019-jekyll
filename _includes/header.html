@@ -1,0 +1,17 @@
+<header>
+     <div class="burger" onclick="openMenu(this)">
+          <span></span>
+          <span></span>
+          <span></span>
+     </div>
+
+     <nav onclick="openMenu(this)">
+          <ul class="nav">
+               {% for item in site.data.nav %}
+               <li><a href="{{item.link}}">{{item.title}}<span></span></a></li>
+               {% endfor %}
+          </ul>
+
+          {% include social.html %}
+     </nav>
+</header>

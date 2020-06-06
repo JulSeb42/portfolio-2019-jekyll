@@ -1,0 +1,91 @@
+---
+title: About me
+desc: 
+bio: |-
+ {:.fade}
+ Your content here
+experiences:
+ - title: Title
+   company: Company
+   city: City
+   date: Start Date - End Date
+   description: Description
+   skills: skills
+educations:
+ - title: Title
+   school: School
+   city: City
+   date: Start Date - End Date
+   description: Description
+skills:
+ - logo: logo-photoshop.svg
+   link: "#"
+languages: [Language, Language]
+---
+
+<div class="bio">
+    <div class="text-bio fade">
+        {{ page.bio | markdownify }}
+    </div>
+
+    <div class="pic-about fade">
+        <div class="glitch-item">
+            <div class="glitch glitch-1">
+                <div class="glitch-img" style="background: url(/assets/images/{{site.picture}});"></div>
+                <div class="glitch-img" style="background: url(/assets/images/{{site.picture}});"></div>
+                <div class="glitch-img" style="background: url(/assets/images/{{site.picture}});"></div>
+                <div class="glitch-img" style="background: url(/assets/images/{{site.picture}});"></div>
+                <div class="glitch-img" style="background: url(/assets/images/{{site.picture}});"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-about">
+    <div class="col">
+        <h3 class="fade">Education</h3>
+        <ul class="timeline">
+            {% for education in page.educations %}
+            <li class="fade">
+                <p class="infos">{{ education.date }}</p>
+                <p class="title">{{ education.title }} at {{ education.school }}, {{ education.city }}</p>
+                <p class="description">{{ education.description }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <h3 class="fade">Skills</h3>
+        <ul class="skills-list">
+            {% for skill in page.skills %}
+            <li class="fade">
+                <a href="{{ skill.url }}" target="_blank">
+                    <img src="/assets/images/{{ skill.logo }}" alt="{{ skill.logo | capitalize | remove: '.svg' | replace: '-',' ' }}">
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <h3 class="fade">Languages</h3>
+        <ul class="language-list">
+            {% for language in page.languages %}
+            <li class="fade">{{ language }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="col">
+        <h3 class="fade">Experience</h3>
+        <ul class="timeline">
+            {% for experience in page.experiences %}
+            <li class="fade">
+                <p class="title">{{ experience.title }}</p>
+                <p class="infos">{{ experience.company }}, {{ experience.city }} | {{ experience.date }}</p>
+                <p class="description">{{ experience.description }}</p>
+                {% if experience.skills %}
+                <p class="skills"><em>Skills: {{ experience.skills }}</em></p>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

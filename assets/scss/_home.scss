@@ -1,0 +1,50 @@
+/*============================================================= Home =============================================================*/
+
+.container-home {
+    @include flexbox(flex-start, flex-start, nowrap);
+    @include flex-direction(column);
+    padding-top: 0;
+
+    .cover-home {
+        @include flexbox(flex-end, flex-start, nowrap);
+        position: relative;
+        padding-left: $margin-big;
+        width: 100%;
+        padding: {
+            top: 10vh;
+            bottom: 10vh;
+        }
+        height: 100vh !important;
+        max-width: 1200px;
+        margin: 0 auto;
+
+        .arrow {
+            position: absolute;
+            bottom: $margin-medium;
+            left: 0;
+            width: 100%;
+            @include flexbox(center, center, nowrap);
+            animation: bounce 0.5s infinite alternate;
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: $white;
+            width: 5px;
+            height: 90vh;
+            animation: border_height 2s ease 0s 1 normal forwards;
+        }
+    }
+
+    .list-projects {
+        position: relative;
+        @extend %full;
+        @include flexbox(flex-start, flex-start, nowrap);
+        @include flex-direction(column);
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
