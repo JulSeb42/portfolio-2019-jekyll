@@ -1,3 +1,7 @@
+# Demo
+
+[Find the demo here](https://www.julien-sebag.fr/templates/portfolio-2019-demo/)
+
 # Documentation for Jekyll
 
 ## Install Jekyll
@@ -10,11 +14,11 @@ Create a new folder. Open it in terminal and run `bundle init`. Then open the Ge
 
 ## Build for production
 
-Open the folder in the terminal and type `jekyll build`
+Open the folder in the terminal and type `bundle exec jekyll build`
 
 ## Run website
 
-Open the folder in the terminal and type `jekyll serve`. This automatically build the site and creates a host at the address [http://localhost:4000/](http://localhost:4000/)
+Open the folder in the terminal and type `bundle exec jekyll serve`. This automatically build the site and creates a host at the address [http://localhost:4000/](http://localhost:4000/)
 
 ## Add modifications to content
 
@@ -23,69 +27,55 @@ Open the folder in the terminal and type `jekyll serve`. This automatically buil
 To add a project add a file in `/_projects/` with `name-of-file.md`. In the front matter (between ---) add:
 ```
 ---
-layout: projects
-title: name of project
-number: "n" (n being the order in the projects list)
-cover: name_of_image.jpg
-company: Name of the company
-type_company: Type of the company
-city: City of the company
-position: Position in the company
-desc: Short description for metas
-next_project: name_of_name_project
+title: Title of project
+order: n (n being the number of the position in the list)
+cover: name-of-picture.jpg
+company: Name of company
+type_company: Type of company
+city: City
+position: Position
+desc: Meta description
+next_project: name-of-project
 images:
- - path: name_of_image.jpg
-   col: n (n being the number of columns in the row)
-   text: Title on the image
-   orientation: landscape | portrait
-   alt: Text alt image
-   link: http://www.link-to-project.com (not mandatory)
-   mockup: true | false
-   video: https://www.youtube.com/embed/CsGauHXioos **Copy the link when you share an embed video** (not mandatory)
+ - path: name-of-picture.jpg
+   col: n (n being the number of the position in the list)
+   text: Text displayed on the picture
+   alt: Alt text for the picture
+   link: http://www.link.com (external link, not mandatory)
+   video: https://www.youtube.com/embed/-zZbkPnBtS8 (not mandatory, embed YouTube link. To get this link go to the video you want to display, click on Share, then Embed, and just paste here the link in the src)
 ---
 ```
 For help writing the `.md` file go here: [https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
-To add a class to the generated element add `{:.class}` before the line. To add it in a `li` add this at the beginning of the line `* {:.revealLeft} `
+To add a class to the generated element add `{:.class}` before the line. To add it in a `li` add this at the beginning of the line `* {:.className} `.
 
-### Edit order in the projects list
-
-In the file `_config.yml` add:
-```
-collections:
-    projects:
-        output: true
-        order:
-            - b.md
-            - a.md
-            - c.md
-```
+Each picture has to come in three different sizes. Append all of them with s, m or l. Ex: `l-cover.jpg`, `m-cover.jpg`, `s-cover.jpg`.
 
 ### Add experience
 
-To add an experience open the file `/about.md` and write in the list `experiences`:
+To add an experience open the file `/about.html` and write in the list `experiences`:
 ```
- - title: Job title
+ - title: Title
    company: Name of company
-   city: City of company
-   date: Start date - End date
-   job_description: "Short description of the job."
-   skills: Skill 1, Skill 2
+   city: City
+   date: Start Date - End Date
+   description: Description
+   skills: skills (not mandatory)
 ```
 
 ### Add an education item
 
 To add an experience open the file `/about.md` and write in the list `educations`:
 ```
- - title: Title of the diploma
-   date: Start date - End date
-   school: Name of school
-   city: City of school
-   description: "Short description of the diploma."
+ - title: Title
+   school: School
+   city: City
+   date: Start Date - End Date
+   description: Description
 ```
 
 ### Add a skill
 
-To add a skill put the logo in SVG or PNG centered in a transparent square (on Illustrator / Sketch / any design software) with dimensions 150x150px and add the file to `/assets/images/`. **Use SVG logos when possible**. Then open the file `/about.md` and write in the list `skills`:
+To add a skill put the logo in SVG or PNG centered in a transparent square (on Illustrator / Sketch / any design software) with dimensions 150x150px and add the file to `assets/images/`. **Use SVG logos when possible**. Then open the file `/about.md` and write in the list `skills`:
 ```
  - link: https://www.link-to-brand-website.com/
    logo: name-of-logo.svg
@@ -95,7 +85,7 @@ To add a skill put the logo in SVG or PNG centered in a transparent square (on I
 
 To add a language open the file `/about.md` and write in the list `languages`:
 ```
- - title: Language level
+[Language, Language]
 ```
 
 ### Social links and resume
@@ -109,31 +99,12 @@ Open the file `/_data/social.yml` and write:
   link: https://www.link-to-website.com/
 ```
 
-#### In the contact page
-
-Do the header / footer step. Then open the page `/_layouts/contact.html` and add in the section `ul class="list-links"` 
-```
-{% if item.name == 'name-of-social-link' and item.link %}
-<li class="revealLeft">
-    <a href="{{ item.link }}" target="_blank" class="link-find" id="link-name-of-social-link">Nam<span></span></a>
-</li>
-{% endif %}
-```
-**Do not write the name in the li with its last letter.**
-
-Then open the file `/_sass/main.scss` write in `.link-find`:
-```
-&#link-name-of-social-link::after {
-    content: "last_letter";
-}
-```
-
 ### Add navigation item
 
 Open `/_data/nav.yml` and write:
 ```
 - title: Title displaying in the menu
-  link: /path/to/page.html
+  link: /path/to/page/
 ```
 
 ## Edit layout
@@ -149,20 +120,6 @@ Edit the page `/index.html`
 ### Project page
 
 Edit the page `/_layouts/projects.html`
-
-### About & Contact page
-
-#### Big title in these pages
-
-Edit the page `/_layouts/all.html`
-
-#### About page
-
-Edit the page `/_layouts/about.html`
-
-#### Contact page
-
-Edit the page `/_layouts/contact.html`
 
 ### Header
 
@@ -182,18 +139,17 @@ Edit the page `/_includes/social.html`
 
 SCSS files are located in the folder `/_sass/`, and are automatically compiled to a minified CSS. To add a new SCSS file to the website add this in the `head` of your HTML in `/_layouts/default.html`:
 ```
-<link rel="stylesheet" href="/assets/css/name_of_file.css" />
+<link rel="stylesheet" href="assets/css/name_of_file.css" />
 ```
 
 ### CSS files
 
-CSS files are located in the folder `/assets/css/`. To add it to your website add this in the `head` of your HTML in `/_layouts/default.html`:
+CSS files are located in the folder `assets/css/`. To add it to your website add this in the `head` of your HTML in `/_layouts/default.html`:
 ```
-<link rel="stylesheet" href="/assets/css/name_of_file.css" />
+<link rel="stylesheet" href="assets/css/name_of_file.css" />
 ```
 
 ### CDN CSS files
-
 
 To add it to your website add this in the `head` of your HTML in `/_layouts/default.html`:
 ```
