@@ -90,7 +90,7 @@ To add a language open the file `/about.md` and write in the list `languages`:
 
 ### Social links and resume
 
-#### In header and footer
+#### Social links
 
 Open the file `/_data/social.yml` and write:
 ```
@@ -98,6 +98,10 @@ Open the file `/_data/social.yml` and write:
   icon: icon_name-weight
   link: https://www.link-to-website.com/
 ```
+
+#### Resume
+
+Add your CV in the folder `/assets/images/`. Then open the file `/_config.yml`. And at the line `resume` add the name of the file.
 
 ### Add navigation item
 
